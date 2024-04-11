@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import MyTitle from "./components/MyTitle"
 import PokemonCard from "./components/PokemonCard";
+import NavBar from './components/NavBar';
 
 function App() {
   const [pokemonIndex, setPokemonIndex] = useState(0);
@@ -48,14 +49,11 @@ function App() {
     <>
       <MyTitle />
       <PokemonCard pokemon={pokemonList[pokemonIndex]} />
-      <div>
-        {pokemonIndex > 0 && (
-          <button onClick={handleClickDecrement}>Précédent</button>
-        )}
-        {pokemonIndex < pokemonList.length - 1 && (
-          <button onClick={handleClickIncrement}>Suivant</button>
-        )}
-      </div>
+      <NavBar
+        pokemonIndex={pokemonIndex}
+        handleClickIncrement={handleClickIncrement}
+        handleClickDecrement={handleClickDecrement}
+        pokemonList={pokemonList} />
     </>
   )
 };
