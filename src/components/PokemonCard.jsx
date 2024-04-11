@@ -20,4 +20,4 @@ PokemonCard.propTypes = {
     })
 }
 
-export default PokemonCard
+export default PokemonCard;
