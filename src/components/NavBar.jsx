@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
 
 
-const NavBar = ({ pokemonIndex, handleClickIncrement, handleClickDecrement, pokemonList }) => {
-
+const NavBar = ({ pokemonIndex, pokemonList, setPokemonIndex }) => {
+    const handlePokemonButtonClick = (index) => {
+        setPokemonIndex(index);
+    };
     return (
         <div>
-            {pokemonIndex > 0 && (
-                <button onClick={handleClickDecrement}>Précédent</button>
-            )}
-            {pokemonIndex < pokemonList.length - 1 && (
-                <button onClick={handleClickIncrement}>Suivant</button>
-            )}
+            {pokemonList.map((pokemon, index) => (
+                <button
+                    key={index}
+                    onClick={() => handlePokemonButtonClick(index)} >
+                    {pokemon.name}
+                </button>
+            ))}
         </div>
     )
 }
